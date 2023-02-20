@@ -1,0 +1,119 @@
+$colors: (
+  very-dark-grayish-blue : hsl(217, 19%, 35%),
+  dark-blue: hsl(214, 17%, 51%),
+  grayish-blue: hsl(212, 23%, 69%),
+  light-grayish-blue: hsl(210, 46%, 95%)
+);
+
+@function color($color-name){
+  @return map-get($colors, $color-name )
+}
+
+$desktop  : 840px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop}){
+    @content;
+  }
+}
+
+// $ipad: 600px;
+
+/* @mixin ipad {
+   @media (min-width: #{$ipad}) {
+    @content;
+   }
+} */
+
+  /* $iphone : 365px;
+
+@mixin iphone {
+  @media (min-width: #{$iphone}) {
+      @content;
+  }
+}
+ */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Manrope', sans-serif;
+  font-size:  13px;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background-color: color(light-grayish-blue);
+
+}
+
+.container {
+  margin-top: 4em;
+ display: flex;
+ justify-content: center; 
+ align-items: center;
+ flex-direction: column;
+
+ @include desktop {
+  flex-direction: row;
+ }
+}
+
+ 
+.card-img  img {
+  height:220px;
+  width: 300px;
+  border-radius: 10px 10px 0 0 ;
+  @include desktop {
+   border-radius: 10px 0 0 10px;
+   width: 250px;
+   height: 250px;
+   }
+}
+.card {
+  margin-top: -10px;
+  height: 280px;
+  width: 300px;
+  background-color: white;
+  padding-inline: 20px;
+  border-radius: 0 0 10px 10px;
+
+  @include desktop {
+    margin-top:  0;
+    height: 250px;
+    width:  400px;
+    border-radius: 0 10px 10px 0;
+    padding-inline: 2em;
+   }
+  h3{
+    padding: 1.1em  0;
+    line-height: 1.4;
+    color: color(very-dark-grayish-blue);
+  }
+  p{
+    line-height: 1.4;
+      max-width: 78%;
+      padding-bottom: 10px;
+      color: color(dark-blue);
+  }
+
+
+  
+}
+
+.flex-item {
+  display: flex;
+  margin-top: 10px;
+  
+  .item-1 img {
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  span{
+    color: color(dark-blue);
+  }
+}
